@@ -6,8 +6,15 @@
 ![Task](https://img.shields.io/badge/Task-Regression-purple)
 ![Python](https://img.shields.io/badge/Python-3.11-yellow)
 ![Deploy](https://img.shields.io/badge/Deploy-FastAPI%20%2B%20Docker-red)
+![Live](https://img.shields.io/badge/Live%20API-Render-46E3B7)
+![Demo](https://img.shields.io/badge/Live%20Demo-Streamlit-FF4B4B)
 
 > **Predicting Remaining Useful Life (RUL) of aircraft turbofan engines from sensor data — the same category of model GE Aviation, Boeing, and Rolls-Royce run in production for condition-based maintenance.**
+
+**🖥️ Live Demo:** [turbineguard-api-zrsmmrrahsakaxpftr7jri.streamlit.app](https://turbineguard-api-zrsmmrrahsakaxpftr7jri.streamlit.app/) — pick a sample engine, get a live prediction with an explained risk tier
+
+**🔴 Live API:** [turbineguard-api.onrender.com](https://turbineguard-api.onrender.com) · **Interactive docs:** [turbineguard-api.onrender.com/docs](https://turbineguard-api.onrender.com/docs)
+> Free-tier hosting — the first request after inactivity may take 30-60s to wake up.
 
 ---
 
@@ -134,8 +141,9 @@ clusters reflect real degradation, not statistical noise.
 turbineguard-api/
 │
 ├── 🤖 main.py                     # FastAPI app — /predict endpoint
+├── 🖥️ app.py                      # Streamlit demo dashboard
 ├── 📄 requirements.txt            # Python dependencies
-├── 🐳 Dockerfile                  # Container build config
+├── 🐳 Dockerfile                  # Container build config (FastAPI service)
 │
 ├── turbineguard_model.pkl         # Trained, tuned XGBoost model
 ├── turbineguard_scaler.pkl        # StandardScaler fit on training data
@@ -266,8 +274,8 @@ At fleet scale, condition-based maintenance driven by a model like this can:
 - [x] Unsupervised health clustering, validated against ground truth
 - [x] SHAP global + per-engine explainability
 - [x] FastAPI prediction service, containerized with Docker
+- [x] Streamlit demo dashboard calling the live API, with pre-loaded sample engines
 - [ ] Supabase (PostgreSQL) data layer in place of local files
-- [ ] Streamlit demo dashboard calling the live API, with pre-loaded sample engines
 - [ ] Extend to FD002–FD004 (multiple operating conditions, multiple fault modes)
 
 ---
